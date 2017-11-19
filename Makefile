@@ -10,7 +10,7 @@ CHECK := $(foreach exec,$(EXECUTABLES),\
 
 GIT_HOOKS := .git/hooks/applied
 
-SUBDIRS := src runtime tests
+SUBDIRS := src runtime tests tool
 $(TOPTARGETS): $(GIT_HOOKS) $(SUBDIRS)
 $(SUBDIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)

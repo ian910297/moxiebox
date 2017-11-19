@@ -9,3 +9,4 @@ tests/exit0
 tests/exit1
 tests/rtlib
 tests/sha256
+tool/write
