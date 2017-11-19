@@ -415,16 +415,17 @@ static int gdb_main_loop(uint32_t &gdbPort, machine &mach)
                     sendGdbReply(newsockfd, "S05");
                     i += 4;
                     break;
-                case 'c':
+                case 'c': {
                     wrc = write(newsockfd, "+", 1);
-                    sim_resume(mach);
-                    // FIXME.. assuming BREAK for now
-                    sendGdbReply(newsockfd, "S05");
+                    int sig = sim_resume(mach);
+                    sprintf(reply, "S%.2d", sig);
+                    sendGdbReply(newsockfd, reply);
                     mach.cpu.asregs.regs[16] -= 2;
                     i += 4;
 
                     (void) wrc;
                     break;
+                }
                 case 'g': {
                     int ri;
                     for (ri = 0; ri < 17; ri++) {

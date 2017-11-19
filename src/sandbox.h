@@ -139,7 +139,7 @@ public:
     void fillDescriptors(std::vector<struct mach_memmap_ent> &desc);
 };
 
-extern void sim_resume(machine &mach, unsigned long long cpu_budget = 0);
+extern int sim_resume(machine &mach, unsigned long long cpu_budget = 0);
 extern bool loadElfProgram(machine &mach, const std::string &filename);
 extern bool loadElfHash(machine &mach,
                         const std::string &hash,

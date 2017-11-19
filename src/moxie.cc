@@ -154,7 +154,7 @@ static void sim_mmap(machine &mach)
     }
 }
 
-void sim_resume(machine &mach, unsigned long long cpu_budget)
+int sim_resume(machine &mach, unsigned long long cpu_budget)
 {
     int step = 0;
 
@@ -870,4 +870,6 @@ void sim_resume(machine &mach, unsigned long long cpu_budget)
     /* Hide away the things we've cached while executing.  */
     cpu.asregs.regs[PC_REGNO] = pc;
     cpu.asregs.insts += insts; /* instructions done ... */
+
+    return cpu.asregs.exception;
 }
