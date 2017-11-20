@@ -1,6 +1,6 @@
 top_srcdir = ..
 
-FIB ?= iterative
+FIB ?= ITERATIVE
 
 CFLAGS = \
 	-I$(top_srcdir)/runtime \
