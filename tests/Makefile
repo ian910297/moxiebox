@@ -1,5 +1,7 @@
 top_srcdir = ..
 
+FIB ?= iterative
+
 CFLAGS = \
 	-I$(top_srcdir)/runtime \
 	-Wall \
@@ -18,12 +20,13 @@ TESTS = \
 	exit0 \
 	exit1 \
 	rtlib \
-	sha256
+	sha256 \
+	fib
 
 all: $(TESTS)
 
 %: %.c
-	$(MOX_CC) $(CFLAGS) -c $<
+	$(MOX_CC) $(CFLAGS) -c $< -D$(FIB)
 	$(MOX_CC) $(LDFLAGS) -o $@ $@.o
 
 PASS_COLOR = \e[32;01m
