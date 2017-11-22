@@ -21,7 +21,8 @@ TESTS = \
 	exit1 \
 	rtlib \
 	sha256 \
-	fib
+	fib \
+	cst_memcmp_result_test
 
 all: $(TESTS)
 

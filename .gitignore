@@ -10,5 +10,6 @@ tests/exit1
 tests/rtlib
 tests/sha256
 tests/fib
+tests/cst_memcmp_result_test
 tool/write
 tmp/
