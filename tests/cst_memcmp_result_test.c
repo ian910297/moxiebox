@@ -2,7 +2,7 @@
 #include "sandboxrt.h"
 
 #define PAGE_SIZE 0x1000
-#define MAP_SIZE 0x1000000
+#define MAP_SIZE 0x100000  // 1 Mb
 #define MMAP_FAILED ((void *) -22)
 
 static int prot = MOXIE_PROT_READ | MOXIE_PROT_WRITE | MOXIE_PROT_EXEC;
