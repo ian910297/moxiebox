@@ -14,10 +14,9 @@ static int flags = MOXIE_MAP_PRIVATE | MOXIE_MAP_ANONYMOUS;
     total = 3;                          \
     success = pass;
 
-#define TEST_RULE(m1, m2, expected)             \
-    do {                                        \
-        int val = cst_memcmp(m1, m2, MAP_SIZE); \
-        pass += val == expected;                \
+#define TEST_RULE(m1, m2, expected)                       \
+    do {                                                  \
+        pass += cst_memcmp(m1, m2, MAP_SIZE) == expected; \
     } while (0);
 
 #define TEST_CASE_1(m1, m2)      \
