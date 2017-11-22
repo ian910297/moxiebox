@@ -11,12 +11,13 @@
     "Description:\n"                          \
     "\n"                                      \
     "  Generate the input data for sandbox\n" \
-    "  It write 4 byte to output one times\n" \
+    "  It write bytes to output file\n"       \
     "\n"                                      \
     "Usage:\n"                                \
     "\n"                                      \
-    "-i [input integer]: input data\n"        \
+    "-i [input byte]: input data(decimal)\n"  \
     "-o [output file]: output file\n"         \
+    "-r [repeat times]: repeat input data\n"  \
     "-a : append input data to output file\n" \
     "\n"
 
@@ -54,9 +55,10 @@ int main(int argc, char *argv[])
     bool o_flag = false;
 
     unsigned int input;
-    unsigned char *buffer = (unsigned char *) &input;
+    unsigned int repeat = 1;
+    unsigned char *buffer;
 
-    while ((opt = getopt(argc, argv, "i:o:ah")) != -1) {
+    while ((opt = getopt(argc, argv, "i:o:r:ah")) != -1) {
         switch (opt) {
         case 'i':
             input = (unsigned int) strtol(optarg, NULL, 10);
@@ -68,6 +70,9 @@ int main(int argc, char *argv[])
             break;
         case 'a':
             access = "ab";
+            break;
+        case 'r':
+            repeat = (unsigned int) strtol(optarg, NULL, 10);
             break;
         case 'h':
         default:
@@ -90,8 +95,12 @@ int main(int argc, char *argv[])
     if (!is_little_endian())
         input = reverse_byte(input);
 
-    fwrite(buffer, sizeof(char), sizeof(int), out_file);
+    buffer = malloc(sizeof(char) * repeat);
+    memset(buffer, input, repeat);
+
+    fwrite(buffer, sizeof(char), sizeof(char) * repeat, out_file);
     fclose(out_file);
+    free(buffer);
 
     return 0;
 }
