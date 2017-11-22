@@ -79,4 +79,5 @@ extern char *strncpy(char *dest, const char *src, size_t n);
 extern char *strcpy(char *dest, const char *src);
 extern char *strstr(const char *haystack, const char *needle);
 
+extern int cst_memcmp(const void *m1, const void *m2, size_t n);
 #endif  // __SANDBOXRT_H__

@@ -21,7 +21,8 @@ OBJS = \
 	strncpy.o \
 	strstr.o \
 	sys-_exit.o \
-	sys-mmap.o
+	sys-mmap.o \
+	cst_memcmp.o
 
 deps := $(OBJS:%.o=.%.o.d)
 
