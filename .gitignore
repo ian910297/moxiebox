@@ -11,5 +11,6 @@ tests/rtlib
 tests/sha256
 tests/fib
 tests/cst_memcmp_result_test
+tests/cst_memcmp_time_test
 tool/write
 tmp/
