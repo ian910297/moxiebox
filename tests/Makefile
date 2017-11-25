@@ -23,7 +23,8 @@ TESTS = \
 	sha256 \
 	fib \
 	cst_memcmp_result_test \
-	cst_memcmp_time_test
+	cst_memcmp_time_test \
+	cn_string
 
 all: $(TESTS)
 
